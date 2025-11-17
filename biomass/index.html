@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biomass Project</title>
+    <title>生物质蒸汽项目介绍</title>
     <style>
         /* 语言切换按钮 */
         .lang-switch {
@@ -119,6 +119,70 @@
                 radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
             animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Logo 样式 */
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: logoFloat 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: logoShine 3s linear infinite;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo 占位符样式（如果没有图片） */
+        .logo-placeholder {
+            font-size: 4em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: bold;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes logoFloat {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes logoShine {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         #welcome h1 {
@@ -330,6 +394,15 @@
             color: #97bc62;
             align-self: center;
             animation: slideRight 2s ease-in-out infinite;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .arrow {
+                transform: rotate(90deg);
+                margin: 10px 0;
+                animation: slideDown 2s ease-in-out infinite;
+            }
         }
 
         /* 数据亮点 */
@@ -604,6 +677,15 @@
             }
         }
 
+        @keyframes slideDown {
+            0%, 100% {
+                transform: rotate(90deg) translateX(0);
+            }
+            50% {
+                transform: rotate(90deg) translateX(10px);
+            }
+        }
+
         @keyframes moveBackground {
             0%, 100% {
                 background-position: 0% 0%;
@@ -681,8 +763,18 @@
     <section id="welcome">
         <div class="particles" id="particles-welcome"></div>
         <div class="container">
-            <h1 data-zh="恒利生物质蒸汽项目" data-en="Hengli Biomass Steam Project">生物质蒸汽项目</h1>
-            <p data-zh="变废为宝 · 绿色能源 · 助力减碳" data-en="Waste to Energy · Green Power · Carbon Reduce">变废为宝 · 绿色能源 · 助力双碳</p>
+            <!-- Logo区域 - 在这里添加你的logo -->
+            <div class="logo">
+                <!-- 方式1：使用图片logo（推荐） -->
+                <!-- 取消下面这行的注释，并替换 your-logo.png 为你的logo文件路径 -->
+                <img src="/biomass/logo.svg" alt="Logo">
+                
+                <!-- 方式2：使用文字作为logo占位符（当前显示） -->
+                <!--<div class="logo-placeholder">🌿</div> -->
+            </div>
+            
+            <h1 data-zh="恒利生物质蒸汽项目" data-en="Hengli Biomass Steam Project">恒利生物质蒸汽项目</h1>
+            <p data-zh="变废为宝 · 绿色能源 · 助力减碳" data-en="Waste to Energy · Green Power · Carbon Reduce">变废为宝 · 绿色能源 · 助力减碳</p>
         </div>
         <div class="scroll-hint">↓</div>
     </section>
@@ -714,7 +806,7 @@
                             <li data-zh="近零碳排放" data-en="Near Zero Carbon Emissions">近零碳排放</li>
                             <li data-zh="清洁环保" data-en="Clean & Eco-friendly">清洁环保</li>
                             <li data-zh="可再生资源" data-en="Renewable Resources">可再生资源</li>
-                            <li data-zh="符合SBTi目标" data-en="Aligned with SBTi Goals">符合双碳目标</li>
+                            <li data-zh="符合SBTi目标" data-en="Aligned with SBTi Target">符合双碳目标</li>
                         </ul>
                     </div>
                 </div>
@@ -764,7 +856,7 @@
                     <div class="step-icon">💨</div>
                     <h3 data-zh="蒸汽输出" data-en="Steam Output">蒸汽输出</h3>
                     <p>
-                        <span data-zh="通过专线稳定供应生物质蒸汽" data-en="Stable supply of biomass steam through dedicated lines">稳定供应工业蒸汽</span><br>
+                        <span data-zh="通过专线稳定供应生物质蒸汽" data-en="Stable supply of biomass steam through dedicated pipelines">通过专线稳定供应生物质蒸汽</span><br>
                         <span data-zh="满足恒利绿色蒸汽需求" data-en="Meeting Hengli's Green Biomass Steam Needs">满足恒利绿色蒸汽需求</span>
                     </p>
                 </div>
@@ -790,18 +882,18 @@
                 <div class="stat-card">
                     <div class="stat-icon">💨</div>
                     <div class="stat-content">
-                        <span class="stat-number" data-target="-95.5">0</span>
+                        <span class="stat-number" data-target="-95">0</span>
                         <span class="stat-unit" data-zh="%" data-en="%">%</span>
                         <div class="stat-label" data-zh="来源于蒸汽的CO₂排放" data-en="CO₂ Emission from Steam">来源于蒸汽的CO₂排放</div>
-                        <div class="stat-desc" data-zh="结合绿电直采，恒利实现100%绿色能源" data-en="Combined with PPA green power harvesting for 100% green energy">结合绿电直采，实现100%绿色能源</div>
+                        <div class="stat-desc" data-zh="绿电直采+生物质蒸汽恒利实现100%绿色能源" data-en="PPA green power + Biomass Steam harvesting for 100% green energy">绿电直采+生物质蒸汽恒利实现100%绿色能源</div>
                     </div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-icon">🌱</div>
                     <div class="stat-content">
-                        <span class="stat-number" data-target="-1200000">0</span>
+                        <span class="stat-number" data-target="-120000">0</span>
                         <span class="stat-unit" data-zh="吨/年" data-en="tons/year">吨/年</span>
-                        <div class="stat-label" data-zh="恒利碳减排量" data-en="Hengli's annual CO₂ Reduction through Biomasss project">恒利碳减排量</div>
+                        <div class="stat-label" data-zh="恒利CO₂减排量" data-en="Hengli's annual CO₂ Reduction through Biomasss project">恒利CO₂减排量</div>
                         <div class="stat-desc" data-zh="相当于植树造林500万棵" data-en="Equivalent to planting 5 million trees">相当于植树造林500万棵</div>
                     </div>
                 </div>
@@ -819,16 +911,17 @@
                     <h3 data-zh="变废为宝" data-en="Waste to Treasure">变废为宝</h3>
                     <p data-zh="将农林废弃物转化为清洁能源，解决秸秆焚烧污染问题，实现资源循环利用" 
                        data-en="Converting agricultural waste into clean energy, solving straw burning pollution, achieving resource recycling">
-                        将农林废弃物转化为清洁能源，解决秸秆焚烧等污染问题，实现资源循环利用
+                        将农林废弃物转化为清洁能源，解决秸秆焚烧污染问题，实现资源循环利用
                     </p>
                 </div>
                 <div class="value-card">
                     <div class="value-icon">🌍</div>
-                    <h3 data-zh="助力减碳" data-en="Carbon Reduce">助力双碳</h3>
-                    <p data-zh="替代化石能源，大幅降低碳排放，为SBTi目标贡献力量" 
+                    <h3 data-zh="助力双碳" data-en="Carbon Neutrality">助力双碳</h3>
+                    <p data-zh="替代化石能源，大幅降低碳排放，为国家碳达峰、碳中和目标贡献力量" 
                        data-en="Replacing fossil fuels, significantly reducing carbon emissions, contributing to SBTi target">
                         替代化石能源，大幅降低碳排放，为SBTi目标贡献力量
                     </p>
+                </div>
             </div>
         </div>
     </section>
